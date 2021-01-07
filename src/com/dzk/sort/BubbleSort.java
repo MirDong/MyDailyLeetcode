@@ -12,7 +12,7 @@ public class BubbleSort extends BaseSort{
         printArray(input);
     }
 
-    //冒泡拍需要
+    //冒泡排序
     private static void doSort(int[] input) {
         if (input == null ||input.length < 2){
             return;
