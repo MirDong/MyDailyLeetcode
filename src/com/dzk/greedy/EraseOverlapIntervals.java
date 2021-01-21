@@ -19,7 +19,7 @@ public class EraseOverlapIntervals {
 
     public static void main(String[] args) {
         int[][] interval = {{1,2},{1,3},{2,3}};
-        int result = eraseOverlapIntervals(interval);
+        int result = eraseOverlapIntervals2(interval);
         System.out.println(result);
     }
 
@@ -33,6 +33,8 @@ public class EraseOverlapIntervals {
                 return o1[1] < o2[1] ? -1:o1[1] == o2[1] ? 0: 1;
             }
         });
+        //lamada实现
+        //Arrays.sort(interval,(a,b) ->a[1] - b[1]);
         int count =1;
         int end = interval[0][1];
 
@@ -48,5 +50,22 @@ public class EraseOverlapIntervals {
         return interval.length - count;
     }
 
-
+    // 计算需要移除的重叠区域个数，计算方式为移除尾部数值end大的一个区间，保留小的区间
+    private static int eraseOverlapIntervals2(int[][] interval) {
+        if (interval == null ||interval.length < 2){
+            return 0;
+        }
+        Arrays.sort(interval,(a,b) -> a[1] - b[1]);
+        int count = 0;
+        int end = interval[0][1];
+        for (int i = 1; i < interval.length; i++) {
+            if (interval[i][0] < end){
+                end = Math.min(interval[i][0],end);
+                count++;
+            }else {
+                end = interval[i][1];
+            }
+        }
+        return count;
+    }
 }
