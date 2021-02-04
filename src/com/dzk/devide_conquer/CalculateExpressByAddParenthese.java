@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * # 1. 给表达式加括号
+ * # 1. 给表达式加括号，利用分治算法
  */
 public class CalculateExpressByAddParenthese {
     public static void main(String[] args) {
