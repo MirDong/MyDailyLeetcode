@@ -15,7 +15,7 @@ public class OrderOfSequence {
     public static void main(String[] args) {
         int[] pushSequence = {1,2,3,4,5};
         int[] popSequence = {4,5,3,2,1};
-        if (IsPopOrder(pushSequence,popSequence)){
+        if (IsPopOrderByHand(pushSequence,popSequence)){
             System.out.println("顺序一致");
         }else {
             System.out.println("顺序不一致");
@@ -28,6 +28,32 @@ public class OrderOfSequence {
             stack.push(pushSequence[pushIndex]);
             while (popIndex < n && !stack.isEmpty()
                     && stack.peek() == popSequence[popIndex]) {
+                stack.pop();
+                popIndex++;
+            }
+        }
+        return stack.isEmpty();
+    }
+
+    /**
+     * 时间复杂度为O(n)空间复杂度为O(n)
+     * @param pushSequence
+     * @param popSequence
+     * @return
+     */
+    public static boolean IsPopOrderByHand(int[] pushSequence, int[] popSequence) {
+        if (pushSequence == null || popSequence == null){
+            return false;
+        }
+        if (pushSequence.length == 0 ||popSequence.length == 0){
+            return false;
+        }
+
+        int length = pushSequence.length;
+        Stack<Integer> stack = new Stack<>();
+        for (int i = 0,popIndex = 0; i < length; i++) {
+            stack.push(pushSequence[i]);
+            while (!stack.isEmpty() && popIndex < length && stack.peek() == popSequence[popIndex]){
                 stack.pop();
                 popIndex++;
             }
