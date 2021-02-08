@@ -11,7 +11,8 @@ import java.util.PriorityQueue;
 public class KOfMinHeap {
     public static void main(String[] args) {
         int[] input = {4, 1, 3, 2, 16, 9, 10, 14, 8, 7};
-        List<Integer> minHeap = getLeastKHeap(input, 4);
+//        List<Integer> minHeap = getLeastKHeap(input, 4);
+        List<Integer> minHeap = getMinKScopeList(input, 4);
         System.out.println(minHeap);
     }
 
@@ -42,4 +43,88 @@ public class KOfMinHeap {
         }
         return new ArrayList<>(maxHeap);
     }
+
+    //方法二  快速选择，  通过快速排序算法，找到第K个元素，此时第K个元素左边的元素均小于第K个元素
+    private static List<Integer> getMinKScopeList(int[] input,int k){
+        List<Integer> res = new ArrayList<>();
+        if (input.length < k || k < 0){
+            return res;
+        }
+
+        findKthCollections(input,k);
+        for (int i = 0; i < k; i++) {
+            res.add(input[i]);
+        }
+        return res;
+    }
+    /*public void findKthSmallest(int[] nums, int k) {
+        int l = 0, h = nums.length - 1;
+        while (l < h) {
+            int j = partition(nums, l, h);
+            if (j == k)
+                break;
+            if (j > k)
+                h = j - 1;
+            else
+                l = j + 1;
+        }
+    }*/
+    private static void findKthCollections(int[] input, int k) {
+        int length = input.length - 1;
+        int l = 0;
+        int h = length;
+        while (l < h){
+            int j = partion(input,l,h);
+            if (k == j){
+                break;
+            }else if (k > j){
+                l = j + 1;
+            }else {
+                h = j - 1;
+            }
+        }
+    }
+/*    private int partition(int[] nums, int l, int h) {
+        int p = nums[l];     *//* 切分元素 *//*
+        int i = l, j = h + 1;
+        while (true) {
+            while (i != h && nums[++i] < p) ;
+            while (j != l && nums[--j] > p) ;
+            if (i >= j)
+                break;
+            swap(nums, i, j);
+        }
+        swap(nums, l, j);
+        return j;
+    }*/
+    private static int partion(int[] input, int l, int h) {
+        int element = input[l];
+        int left = l;
+        int right = h + 1;
+        while (true){
+            while (left != h && input[++left] < element);
+            while (right != l && input[--right] > element);
+            if (left >= right){
+                break;
+            }
+            wrap(input,left,right);
+        }
+        wrap(input,right,l);
+        return right;
+    }
+
+    private static void wrap(int[] input, int right, int l) {
+        int temp = input[right];
+        input[right] = input[l];
+        input[l] = temp;
+    }
+
+
+
+
+
+
+
+
+
 }
