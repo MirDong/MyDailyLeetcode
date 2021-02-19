@@ -8,4 +8,8 @@ public class ListNode {
         this.value = value;
         this.next = next;
     }
+
+    public ListNode(int value) {
+        this.value = value;
+    }
 }
