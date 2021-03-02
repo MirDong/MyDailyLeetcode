@@ -14,9 +14,9 @@ public class InOrder {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1, new TreeNode(2, new TreeNode(4, null, null), new TreeNode(5, null, null)),
                 new TreeNode(3, new TreeNode(6, null, null), new TreeNode(7, null, null)));
-//        List<Integer> result = inOrderTraversal(root);
+        List<Integer> result = inOrderTraversal(root);
 //        List<Integer> result = inOrderByRecursive(root);
-        List<Integer> result = inOrderTraversalByMorris(root);
+//        List<Integer> result = inOrderTraversalByMorris(root);
         System.out.println(result);
 
     }
