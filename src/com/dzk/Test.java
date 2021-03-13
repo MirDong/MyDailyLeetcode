@@ -2,6 +2,8 @@ package com.dzk;
 
 import com.dzk.list.ListNode;
 
+import java.util.HashMap;
+
 public class Test {
     public static void main(String[] args) {
         ListNode head = new ListNode(-1,null);

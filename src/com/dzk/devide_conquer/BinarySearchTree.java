@@ -65,4 +65,26 @@ public class BinarySearchTree {
     }
 
 
+    private static List<TreeNode> makeTree(int m ,int n){
+        List<TreeNode> res = new ArrayList<>();
+         if (m > n){
+             res.add(null);
+             return res;
+         }
+
+        for (int i = 1; i < n; i++) {
+            TreeNode rootNode = new TreeNode(i);
+            List<TreeNode> leftSubTree = makeTree(0,i - 1);
+            List<TreeNode> rightSubTree = makeTree(i + 1,n);
+            for (TreeNode left:leftSubTree) {
+                for (TreeNode right : rightSubTree) {
+                    rootNode.leftTree = left;
+                    rootNode.rightTree = right;
+                    res.add(rootNode);
+                }
+            }
+        }
+        return res;
+    }
+
 }

@@ -1,6 +1,8 @@
 package com.dzk.tree.traversal;
 
 
+import com.dzk.Test;
+import com.dzk.list.ListNode;
 import com.dzk.tree.TreeNode;
 
 import java.util.ArrayList;
@@ -104,5 +106,20 @@ public class PreOrder {
         }
         return res;
     }
-
+    List<Integer> preNode(TreeNode root){
+        List<Integer> res = new ArrayList<>();
+        if (root == null) return res;
+        Deque<TreeNode> stack = new LinkedList<>();
+        TreeNode node = root;
+        while (!stack.isEmpty() && node != null){
+            while (node != null){
+                res.add(node.val);
+                stack.push(node);
+                node = node.leftTree;
+            }
+            node = stack.pop();
+            node = node.rightTree;
+        }
+        return res;
+    }
 }
