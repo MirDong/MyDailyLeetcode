@@ -38,4 +38,14 @@ public class MergeTree {
         root.rightTree = mergeBinaryTree(t1.rightTree,t2.rightTree);
         return root;
     }
+
+    private static TreeNode merge(TreeNode t1,TreeNode t2){
+        if (t1 == null) return t2;
+        if (t2 == null) return t1;
+        TreeNode head = new TreeNode(t1.val + t2.val);
+        head.leftTree = merge(t1.leftTree,t2.leftTree);
+        head.rightTree = merge(t1.rightTree,t2.rightTree);
+        return head;
+
+    }
 }
