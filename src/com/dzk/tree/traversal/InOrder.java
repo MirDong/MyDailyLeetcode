@@ -32,22 +32,22 @@ public class InOrder {
         TreeNode cur2 = null;
         //构建连接线
         while (cur != null){
-            cur2 = cur.leftTree;
+            cur2 = cur.left;
             if (cur2 != null){
-                while (cur2.rightTree != null && cur2.rightTree != cur){
-                    cur2 = cur2.rightTree;
+                while (cur2.right != null && cur2.right != cur){
+                    cur2 = cur2.right;
                 }
-                if (cur2.rightTree == null){
-                    cur2.rightTree = cur;
-                    cur = cur.leftTree;
+                if (cur2.right == null){
+                    cur2.right = cur;
+                    cur = cur.left;
                     continue;
                 }else {
-                    cur2.rightTree = null;
+                    cur2.right = null;
                 }
             }
 
             res.add(cur.val);
-            cur = cur.rightTree;
+            cur = cur.right;
         }
         return res;
     }
@@ -65,9 +65,9 @@ public class InOrder {
         if (root == null) {
             return null;
         }
-        inOrderByRecursive(root.leftTree, res);
+        inOrderByRecursive(root.left, res);
         res.add(root.val);
-        inOrderByRecursive(root.rightTree, res);
+        inOrderByRecursive(root.right, res);
         return res;
     }
 
@@ -85,12 +85,12 @@ public class InOrder {
 
             while (cur != null) {
                 stack.push(cur);
-                cur = cur.leftTree;
+                cur = cur.left;
             }
             TreeNode node = stack.pop();
             res.add(node.val);
-            if (node.rightTree != null) {
-                cur = node.rightTree;
+            if (node.right != null) {
+                cur = node.right;
             }
         }
         return res;

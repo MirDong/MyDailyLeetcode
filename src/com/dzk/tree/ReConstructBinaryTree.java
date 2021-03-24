@@ -1,7 +1,5 @@
 package com.dzk.tree;
 
-import com.dzk.list.ListNode;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,8 +30,8 @@ private static Map<Integer,Integer> maps = new HashMap<>();
         TreeNode rootNode = new TreeNode(pre[startIndex]);
         int rootIndex = maps.get(rootNode.val);
         int leftTreeSize = rootIndex - leftIndex;
-        rootNode.leftTree = reConstructTree(pre, startIndex + 1, startIndex + leftTreeSize, leftIndex);
-        rootNode.rightTree = reConstructTree(pre, startIndex +leftTreeSize + 1, endIndex, leftIndex + leftTreeSize + 1);
+        rootNode.left = reConstructTree(pre, startIndex + 1, startIndex + leftTreeSize, leftIndex);
+        rootNode.right = reConstructTree(pre, startIndex +leftTreeSize + 1, endIndex, leftIndex + leftTreeSize + 1);
         return rootNode;
     }
 }

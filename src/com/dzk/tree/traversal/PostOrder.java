@@ -33,12 +33,12 @@ public class PostOrder {
         while (!stack.isEmpty()) {
             TreeNode node = stack.pop();
             stack2.push(node);
-            if (node.leftTree != null){
-                stack.push(node.leftTree);
+            if (node.left != null){
+                stack.push(node.left);
             }
 
-            if (node.rightTree != null){
-                stack.push(node.rightTree);
+            if (node.right != null){
+                stack.push(node.right);
             }
         }
         while (!stack2.isEmpty()){
@@ -62,8 +62,8 @@ public class PostOrder {
         if (root == null) {
             return;
         }
-        postOrder(root.leftTree, res);
-        postOrder(root.rightTree, res);
+        postOrder(root.left, res);
+        postOrder(root.right, res);
         res.add(root.val);
     }
 }

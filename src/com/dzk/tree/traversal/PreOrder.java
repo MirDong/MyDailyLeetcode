@@ -1,8 +1,6 @@
 package com.dzk.tree.traversal;
 
 
-import com.dzk.Test;
-import com.dzk.list.ListNode;
 import com.dzk.tree.TreeNode;
 
 import java.util.ArrayList;
@@ -47,23 +45,23 @@ public class PreOrder {
         TreeNode p1 = root, p2 = null;
 
         while (p1 != null) {
-            p2 = p1.leftTree;
+            p2 = p1.left;
             if (p2 != null) {
-                while (p2.rightTree != null && p2.rightTree != p1) {
-                    p2 = p2.rightTree;
+                while (p2.right != null && p2.right != p1) {
+                    p2 = p2.right;
                 }
-                if (p2.rightTree == null) {
+                if (p2.right == null) {
                     res.add(p1.val);
-                    p2.rightTree = p1;
-                    p1 = p1.leftTree;
+                    p2.right = p1;
+                    p1 = p1.left;
                     continue;
                 } else {
-                    p2.rightTree = null;
+                    p2.right = null;
                 }
             } else {
                 res.add(p1.val);
             }
-            p1 = p1.rightTree;
+            p1 = p1.right;
         }
         return res;
 
@@ -80,8 +78,8 @@ public class PreOrder {
             return null;
         }
         res.add(root.val);
-        preOrderByRecursive(root.leftTree,res);
-        preOrderByRecursive(root.rightTree,res);
+        preOrderByRecursive(root.left,res);
+        preOrderByRecursive(root.right,res);
         return res;
     }
 
@@ -99,10 +97,10 @@ public class PreOrder {
             while (node != null){
                 res.add(node.val);
                 stack.push(node);
-                node = node.leftTree;
+                node = node.left;
             }
             node = stack.pop();
-            node = node.rightTree;
+            node = node.right;
         }
         return res;
     }
@@ -115,10 +113,10 @@ public class PreOrder {
             while (node != null){
                 res.add(node.val);
                 stack.push(node);
-                node = node.leftTree;
+                node = node.left;
             }
             node = stack.pop();
-            node = node.rightTree;
+            node = node.right;
         }
         return res;
     }

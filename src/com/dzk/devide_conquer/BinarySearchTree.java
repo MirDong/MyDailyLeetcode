@@ -53,8 +53,8 @@ public class BinarySearchTree {
             List<TreeNode> rightSubTree = generateSubTree(i + 1, n);
             for (TreeNode left : leftSubTree) {
                 for (TreeNode right : rightSubTree) {
-                    treeNode.leftTree = left;
-                    treeNode.rightTree = right;
+                    treeNode.left = left;
+                    treeNode.right = right;
                     list.add(treeNode);
                 }
             }
@@ -78,8 +78,8 @@ public class BinarySearchTree {
             List<TreeNode> rightSubTree = makeTree(i + 1,n);
             for (TreeNode left:leftSubTree) {
                 for (TreeNode right : rightSubTree) {
-                    rootNode.leftTree = left;
-                    rootNode.rightTree = right;
+                    rootNode.left = left;
+                    rootNode.right = right;
                     res.add(rootNode);
                 }
             }

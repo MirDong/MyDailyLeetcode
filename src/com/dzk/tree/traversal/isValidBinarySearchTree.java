@@ -17,10 +17,10 @@ public class isValidBinarySearchTree {
     //解题思路一,中序遍历，比较当前节点与前继节点的大小
     private static boolean isValidByInOrder(TreeNode root){
         if (root == null) return true;
-        if (!isValidByInOrder(root.leftTree)) return false;
+        if (!isValidByInOrder(root.left)) return false;
         if (prev != null && prev.val >= root.val) return false;
         prev = root;
-        if (!isValidByInOrder(root.rightTree)) return false;
+        if (!isValidByInOrder(root.right)) return false;
         return true;
     }
 
@@ -29,8 +29,8 @@ public class isValidBinarySearchTree {
         if (root == null) return true;
         int min = Integer.MAX_VALUE;
         int max = Integer.MIN_VALUE;
-        max = findMaxMumNode(root.leftTree,max);
-        min = findMinmumNode(root.rightTree,min);
+        max = findMaxMumNode(root.left,max);
+        min = findMinmumNode(root.right,min);
         if (max >= root.val || min <= root.val){
             return false;
         }
@@ -39,21 +39,21 @@ public class isValidBinarySearchTree {
 
     private static int findMinmumNode(TreeNode root, int min) {
         if (root == null) return min;
-        findMinmumNode(root.leftTree, min);
+        findMinmumNode(root.left, min);
         min = Math.min(min,root.val);
-        findMinmumNode(root.rightTree,min);
+        findMinmumNode(root.right,min);
         return min;
     }
 
     private static int findMaxMumNode(TreeNode root, int max) {
         if (root == null) return max;
-        findMaxMumNode(root.leftTree,max);
+        findMaxMumNode(root.left,max);
         if (max == -1){
             max = root.val;
         }else {
             max = Math.max(max,root.val);
         }
-        findMaxMumNode(root.rightTree,max);
+        findMaxMumNode(root.right,max);
         return max;
     }
 }

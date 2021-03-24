@@ -34,8 +34,8 @@ public class MergeTree {
         if (t1 == null) return t2;
         if (t2 == null) return t1;
         TreeNode root = new TreeNode(t1.val + t2.val);
-        root.leftTree = mergeBinaryTree(t1.leftTree,t2.leftTree);
-        root.rightTree = mergeBinaryTree(t1.rightTree,t2.rightTree);
+        root.left = mergeBinaryTree(t1.left,t2.left);
+        root.right = mergeBinaryTree(t1.right,t2.right);
         return root;
     }
 
@@ -43,8 +43,8 @@ public class MergeTree {
         if (t1 == null) return t2;
         if (t2 == null) return t1;
         TreeNode head = new TreeNode(t1.val + t2.val);
-        head.leftTree = merge(t1.leftTree,t2.leftTree);
-        head.rightTree = merge(t1.rightTree,t2.rightTree);
+        head.left = merge(t1.left,t2.left);
+        head.right = merge(t1.right,t2.right);
         return head;
 
     }

@@ -2,8 +2,8 @@ package com.dzk.tree;
 
 public class TreeNode {
     public int val;
-    public TreeNode leftTree;
-    public TreeNode rightTree;
+    public TreeNode left;
+    public TreeNode right;
 
     public TreeNode() {
     }
@@ -12,9 +12,9 @@ public class TreeNode {
         this.val = val;
     }
 
-    public TreeNode(int val, TreeNode leftTree, TreeNode rightTree) {
+    public TreeNode(int val, TreeNode left, TreeNode right) {
         this.val = val;
-        this.leftTree = leftTree;
-        this.rightTree = rightTree;
+        this.left = left;
+        this.right = right;
     }
 }

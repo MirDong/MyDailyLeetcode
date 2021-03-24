@@ -5,7 +5,6 @@ import com.dzk.tree.TreeNode;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.concurrent.Executors;
 
 /**
  * 前序遍历
@@ -15,8 +14,8 @@ public class PreOrder {
     private List<Integer> preOrder(TreeNode root){
         if (root == null) return res;
         res.add(root.val);
-        preOrder(root.leftTree);
-        preOrder(root.rightTree);
+        preOrder(root.left);
+        preOrder(root.right);
         return res;
     }
 }

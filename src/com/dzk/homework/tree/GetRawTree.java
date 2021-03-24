@@ -1,6 +1,5 @@
 package com.dzk.homework.tree;
 
-import com.dzk.list.ListNode;
 import com.dzk.tree.TreeNode;
 
 import java.util.HashMap;
@@ -28,8 +27,8 @@ public class GetRawTree {
         TreeNode root = new TreeNode(value);
         int rootIndex = maps.get(value);
         int leftTreeSize = rootIndex - left;
-        root.leftTree = generateTree(pre,startIndex + 1,startIndex + leftTreeSize,left);
-        root.rightTree = generateTree(pre, startIndex + leftTreeSize + 1, endIndex, left + leftTreeSize + 1);
+        root.left = generateTree(pre,startIndex + 1,startIndex + leftTreeSize,left);
+        root.right = generateTree(pre, startIndex + leftTreeSize + 1, endIndex, left + leftTreeSize + 1);
         return root;
     }
 }
